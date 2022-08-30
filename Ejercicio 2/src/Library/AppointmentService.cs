@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Library
@@ -9,6 +10,16 @@ namespace Library
         {
             StringBuilder stringBuilder = new StringBuilder("Scheduling appointment...\n");
             Boolean isValid = true;
+
+            List<String> strs = new List<String> { name, id, phoneNumber, appoinmentPlace, doctorName };
+
+            foreach (string i in strs)
+            {
+                if (isValid != false)
+                    isValid = nullOrEmpty(i);
+            }
+
+            /*
 
             if (string.IsNullOrEmpty(name))
             {
@@ -41,6 +52,8 @@ namespace Library
                 isValid = false;
             }
 
+            */
+
             if (isValid)
             {
                 stringBuilder.Append("Appoinment scheduled");
@@ -49,5 +62,11 @@ namespace Library
             return stringBuilder.ToString();
         }
 
+        public static Boolean nullOrEmpty(String x)
+        {
+            if (String.IsNullOrEmpty(x))
+                return false;
+            return true;
+        }
     }
 }
